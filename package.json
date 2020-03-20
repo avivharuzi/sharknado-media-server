@@ -1,0 +1,24 @@
+{
+  "name": "sharknado-media-server",
+  "version": "1.0.0",
+  "description": "Sharknado a personal media server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avivharuzi/sharknado-media-server.git"
+  },
+  "keywords": [
+    "sharknado",
+    "media",
+    "server"
+  ],
+  "author": "Aviv Haruzi <avivharuzi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avivharuzi/sharknado-media-server/issues"
+  },
+  "homepage": "https://github.com/avivharuzi/sharknado-media-server#readme"
+}
