@@ -12,11 +12,9 @@ export class BrowseHandler {
 
         const browse = await BrowseService.getBrowse(startPath, includingFiles);
 
-        res.send(browse);
-      } catch (e) {
-        console.log('error: ', e);
-
-        res.send({}); // TODO:: Return real error.
+        res.locals.success(browse);
+      } catch (err) {
+        res.locals.error(err);
       }
     };
   }
