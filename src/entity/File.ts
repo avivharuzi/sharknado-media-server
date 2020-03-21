@@ -23,7 +23,9 @@ export class File {
   @Column()
   slug: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   cover: string;
 
   @ManyToOne(type => Folder, folder => folder.files)
