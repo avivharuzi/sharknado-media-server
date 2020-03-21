@@ -25,4 +25,31 @@ export class LibraryService {
 
     return libraryCreator.create();
   }
+
+  static async destroy(id: string): Promise<void> {
+    const libraryRepository = getRepository(entity.Library);
+    const folderRepository = getRepository(entity.Folder);
+    const fileRepository = getRepository(entity.File);
+    const metadataRepository = getRepository(entity.Metadata);
+
+    const library = await LibraryService.getById(id);
+
+    const folderIds = library.folders.map(folder => folder.id);
+
+    const folders = await folderRepository.findByIds(folderIds, { relations: ['files', 'files.metadata'] });
+    const fileIds = [];
+    const metadataIds = [];
+
+    folders.forEach(folder => {
+      folder.files.forEach(file => {
+        fileIds.push(file.id);
+        metadataIds.push(file.metadata.id);
+      });
+    });
+
+    await fileRepository.delete(fileIds);
+    await metadataRepository.delete(metadataIds);
+    await folderRepository.delete(folderIds);
+    await libraryRepository.delete(library.id);
+  }
 }

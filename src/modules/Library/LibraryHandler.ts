@@ -35,4 +35,16 @@ export class LibraryHandler {
       res.locals.error(error);
     }
   }
+
+  static async destroy(req: Request, res: Response): Promise<void> {
+    try {
+      const id = req.params.id;
+
+      await LibraryService.destroy(id);
+
+      res.locals.success();
+    } catch (error) {
+      res.locals.error(error);
+    }
+  }
 }
