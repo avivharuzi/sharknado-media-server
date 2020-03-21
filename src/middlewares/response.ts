@@ -35,7 +35,7 @@ export default () => (req: Request, res: Response, next: NextFunction): void => 
 
   res.locals.error = (err: any): void => {
     if (!config.server.isProduction) {
-      console.log(chalk.red(`Error occurred in request process, err: ${err}`));
+      console.log(chalk.red(`Error occurred in request process, err: ${JSON.stringify(err)}`));
     }
 
     let responseError: ResponseError;
