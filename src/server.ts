@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import * as chalk from 'chalk';
 import * as dotenv from 'dotenv';
 

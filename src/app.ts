@@ -6,6 +6,7 @@ import * as helmet from 'helmet';
 import * as methodOverride from 'method-override';
 import * as morgan from 'morgan';
 
+import * as database from './database';
 import config from './config';
 import middlewares from './middlewares';
 import routes from './routes';
@@ -26,5 +27,7 @@ if (!config.server.isProduction) {
 app.use(middlewares.response()); // res.locals.success, res.locals.error
 
 routes(app); // Configure all our application routes.
+
+database.connect().then(); // Connect to Database.
 
 export default app;
