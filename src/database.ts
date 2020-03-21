@@ -1,7 +1,7 @@
 import * as chalk from 'chalk';
 import { createConnection } from 'typeorm';
 
-const connect = async (): Promise<void> => {
+const connect: () => Promise<void> = async (): Promise<void> => {
   try {
     await createConnection();
 
