@@ -22,7 +22,4 @@ export default Object.freeze({
   PHOTO: [
     '.ai', '.bmp', '.gif', '.ico', '.jpeg', '.jpg', '.png', '.ps', '.psd', '.svg', '.tif', '.tiff',
   ],
-  SUBTITLE: [
-    '.srt', '.sub', '.sbv',
-  ],
 });
