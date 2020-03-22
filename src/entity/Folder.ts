@@ -17,7 +17,25 @@ export class Folder {
   id: number;
 
   @Column()
-  path: string;
+  title: string;
+
+  @Column()
+  slug: string;
+
+  @Column({
+    nullable: true,
+  })
+  summary: string;
+
+  @Column({
+    nullable: true,
+  })
+  poster: string;
+
+  @Column({
+    nullable: true,
+  })
+  background: string;
 
   @ManyToOne(type => Library, library => library.folders)
   library: Library;

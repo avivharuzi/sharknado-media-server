@@ -24,6 +24,9 @@ export class Library {
   @Column()
   type: LibraryType;
 
+  @Column('simple-array')
+  paths: string[];
+
   @OneToMany(type => Folder, folder => folder.library)
   folders: Folder[];
 
