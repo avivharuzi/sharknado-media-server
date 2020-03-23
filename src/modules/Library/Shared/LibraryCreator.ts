@@ -1,9 +1,12 @@
 import * as fastGlob from 'fast-glob';
-import { getRepository } from 'typeorm';
 
 import * as entity from './../../../entity';
 import * as utils from './../../../utils';
 import fileExtensions from './../../Shared/file-extensions';
+import { FlatFolders } from './FlatFolders';
+import { FoldersCreateBehavior } from './FoldersCreateBehavior';
+import { getRepository } from 'typeorm';
+import { GroupFolders } from './GroupFolders';
 import { LibraryType } from './LibraryType';
 
 export class LibraryCreator {
@@ -21,7 +24,6 @@ export class LibraryCreator {
 
   async create(): Promise<entity.Library> {
     const libraryRepository = getRepository(entity.Library);
-
     const folders = await this.createFolders();
 
     // Save library in DB.
@@ -29,44 +31,38 @@ export class LibraryCreator {
     library.name = this.name;
     library.slug = this.slug;
     library.type = this.type;
+    library.paths = this.paths;
     library.folders = folders;
     const newLibrary = await libraryRepository.save(library);
 
-    return libraryRepository.findOne(newLibrary.id, { relations: ['folders'] });
+    return libraryRepository.findOneOrFail(newLibrary.id);
   }
 
-  private async createFolders(): Promise<entity.Folder[]> {
-    const folderRepository = getRepository(entity.Folder);
+  async createFolders(): Promise<entity.Folder[]> {
+    let foldersCreate: FoldersCreateBehavior;
 
-    const folders: entity.Folder[] = [];
-
-    for (const path of this.paths) {
-      const filePaths = await this.getFilePaths(path);
-      const files = await this.createFiles(filePaths);
-
-      // Save folder in DB.
-      const folder = new entity.Folder();
-      folder.path = path;
-      folder.files = files;
-      await folderRepository.save(folder);
-
-      folders.push(folder);
+    switch (this.type) {
+      case LibraryType.Video:
+        foldersCreate = new FlatFolders();
+        break;
+      case LibraryType.Photo:
+      case LibraryType.Audio:
+        foldersCreate = new GroupFolders();
+        break;
+      default:
+        throw new Error('LibraryType does not exist');
     }
 
-    return folders;
+    return foldersCreate.create(this);
   }
 
-  private async createFiles(filePaths: string[]): Promise<entity.File[]> {
+  async createFiles(filePaths: string[]): Promise<entity.File[]> {
     const fileRepository = getRepository(entity.File);
     const metadataRepository = getRepository(entity.Metadata);
-
     const files: entity.File[] = [];
 
     for (const filePath of filePaths) {
       const fileMetadata = await utils.extractFileMetadata(filePath);
-      const name = utils.trimFileName(fileMetadata.name);
-      const slug = utils.slugify(name);
-      const cover = null;
 
       // Save metadata in DB.
       const metadata = new entity.Metadata();
@@ -81,9 +77,6 @@ export class LibraryCreator {
 
       // Save file in DB.
       const file = new entity.File();
-      file.name = name;
-      file.slug = slug;
-      file.cover = cover;
       file.metadata = metadata;
       await fileRepository.save(file);
 
@@ -93,7 +86,7 @@ export class LibraryCreator {
     return files;
   }
 
-  private async getFilePaths(path: string): Promise<string[]> {
+  async getFilePaths(path: string): Promise<string[]> {
     const patterns = this.getPatterns(path);
 
     return await fastGlob(patterns);

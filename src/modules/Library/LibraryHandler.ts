@@ -15,8 +15,8 @@ export class LibraryHandler {
 
   static async show(req: Request, res: Response): Promise<void> {
     try {
-      const id = req.params.id;
-      const library = await LibraryService.getById(id) || {};
+      const libraryId = req.params.libraryId;
+      const library = await LibraryService.getById(libraryId);
 
       res.locals.success(library);
     } catch (error) {
@@ -27,7 +27,6 @@ export class LibraryHandler {
   static async create(req: Request, res: Response): Promise<void> {
     try {
       const body = req.body;
-
       const library = await LibraryService.create(body);
 
       res.locals.success(library);
@@ -38,11 +37,34 @@ export class LibraryHandler {
 
   static async destroy(req: Request, res: Response): Promise<void> {
     try {
-      const id = req.params.id;
+      const libraryId = req.params.libraryId;
 
-      await LibraryService.destroy(id);
+      const deletedLibrary = await LibraryService.destroy(libraryId);
 
-      res.locals.success();
+      res.locals.success(deletedLibrary);
+    } catch (error) {
+      res.locals.error(error);
+    }
+  }
+
+  static async folders(req: Request, res: Response): Promise<void> {
+    try {
+      const libraryId = req.params.libraryId;
+      const folders = await LibraryService.folders(libraryId);
+
+      res.locals.success(folders);
+    } catch (error) {
+      res.locals.error(error);
+    }
+  }
+
+  static async folder(req: Request, res: Response): Promise<void> {
+    try {
+      const libraryId = req.params.libraryId;
+      const folderId = req.params.folderId;
+      const folder = await LibraryService.folder(libraryId, folderId);
+
+      res.locals.success(folder);
     } catch (error) {
       res.locals.error(error);
     }

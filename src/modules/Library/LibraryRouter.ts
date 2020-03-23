@@ -5,9 +5,11 @@ import { LibraryHandler } from './LibraryHandler';
 const router: Router = Router();
 
 router.get('/', LibraryHandler.index);
-router.get('/:id', LibraryHandler.show);
+router.get('/:libraryId', LibraryHandler.show);
 router.post('/', LibraryHandler.create);
-router.delete('/:id', LibraryHandler.destroy);
+router.delete('/:libraryId', LibraryHandler.destroy);
+router.get('/:libraryId/folders', LibraryHandler.folders);
+router.get('/:libraryId/folders/:folderId', LibraryHandler.folder);
 
 export {
   router,
