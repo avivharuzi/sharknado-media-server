@@ -30,6 +30,13 @@ export class BrowseService {
         continue;
       }
 
+      try {
+        await fs.promises.access(directoryPath, fs.constants.R_OK);
+      } catch (_) {
+        // Directory or file is not readable...
+        continue;
+      }
+
       browse.size++;
 
       const title = path.basename(directoryPath);
