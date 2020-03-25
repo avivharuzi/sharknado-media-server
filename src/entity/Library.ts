@@ -13,7 +13,7 @@ import { LibraryType } from '../modules/Library/Shared/LibraryType';
 @Entity()
 export class Library {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column()
   name: string;

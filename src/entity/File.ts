@@ -14,7 +14,7 @@ import { Metadata } from './Metadata';
 @Entity()
 export class File {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @ManyToOne(type => Folder, folder => folder.files)
   folder: Folder;

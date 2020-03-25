@@ -14,7 +14,7 @@ import { Library } from './Library';
 @Entity()
 export class Folder {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column()
   title: string;
