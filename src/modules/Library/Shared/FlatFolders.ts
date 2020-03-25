@@ -3,8 +3,10 @@ import { getRepository } from 'typeorm';
 
 import * as entity from './../../../entity';
 import * as utils from '../../../utils';
+import config from '../../../config';
 import { FoldersCreateBehavior } from './FoldersCreateBehavior';
 import { LibraryCreator } from './LibraryCreator';
+import { LibraryType } from './LibraryType';
 
 export class FlatFolders implements FoldersCreateBehavior {
   async create(libraryCreator: LibraryCreator): Promise<entity.Folder[]> {
@@ -21,6 +23,19 @@ export class FlatFolders implements FoldersCreateBehavior {
 
         const title = utils.trimFileName(fileParse.name);
         const slug = utils.slugify(title);
+        let background = null;
+
+        if (libraryCreator.type === LibraryType.Video) {
+          try {
+            const thumbnailFilePath = await utils.createVideoThumbnail(
+              filePath,
+              config.directory.backgrounds,
+            );
+            background = path.basename(thumbnailFilePath);
+          } catch (_) {
+            // If there is an error do noting and insert background as null.
+          }
+        }
 
         // Save folder in DB.
         const folder = new entity.Folder();
@@ -28,7 +43,7 @@ export class FlatFolders implements FoldersCreateBehavior {
         folder.slug = slug;
         folder.summary = null;
         folder.poster = null;
-        folder.background = null;
+        folder.background = background;
         folder.files = files;
         await folderRepository.save(folder);
 

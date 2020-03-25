@@ -28,6 +28,8 @@ app.use(middlewares.response()); // res.locals.success, res.locals.error
 
 routes(app); // Configure all our application routes.
 
+app.use('/public', express.static(config.directory.public)); // Configure public directory which contain photos and etc.
+
 database.connect().then(); // Connect to Database.
 
 export default app;

@@ -113,3 +113,6 @@ dist
 *.mdb
 *.pdb
 *.sqlite
+
+# Public directory
+public/

@@ -28,7 +28,7 @@ export default async (
   });
 
   const tempFileExtension = path.parse(tempFile).ext;
-  const targetFilePath = `${destinationDir}${fileName}${tempFileExtension}`;
+  const targetFilePath = path.join(destinationDir, `${fileName}${tempFileExtension}`);
 
   await sharp(tempFile).webp({ quality: 50 }).toFile(targetFilePath);
   await fse.unlink(tempFile);
