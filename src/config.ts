@@ -10,5 +10,9 @@ export default Object.freeze({
   directory: {
     public: path.join(__dirname, '..', 'public'),
     backgrounds: path.join(__dirname, '..', 'public', 'backgrounds'),
+    site: path.join(__dirname, '..', 'public', 'site'),
   },
+  file: {
+    siteIndex: path.join(__dirname, '..', 'public', 'site', 'index.html'),
+  }
 });

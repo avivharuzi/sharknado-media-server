@@ -30,6 +30,14 @@ routes(app); // Configure all our application routes.
 
 app.use('/public', express.static(config.directory.public)); // Configure public directory which contain photos and etc.
 
+if (config.server.isProduction) {
+  app.use(express.static(config.directory.site));
+
+  app.get('*', (_, res) => {
+    res.sendFile(config.file.siteIndex); // In case it's not API serve the website...
+  });
+}
+
 database.connect().then(); // Connect to Database.
 
 export default app;
