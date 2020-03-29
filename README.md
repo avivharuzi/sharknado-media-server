@@ -1,3 +1,5 @@
+![Logo](web/src/assets/icons/icon-152x152.png)
+
 # Sharknado Media Server
 
 Sharknado a personal media server with website to access the media.
