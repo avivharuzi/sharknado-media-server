@@ -2,6 +2,8 @@
 
 Sharknado a personal media server with website to access the media.
 
+> NOTICE: This project made for fun so there is a lot of things that still missing if you like this project let me know maybe it can be grow more than it is...
+
 ## Stack
 
 * Angular 9
