@@ -1,0 +1,10 @@
+<ng-container *ngIf="libraries$ | async as libraries">
+  <ng-container *ngIf="!(isLibrariesLoading$ | async)">
+    <div class="row" *ngIf="libraries && libraries.length > 0">
+      <div class="col-xl-2 col-lg-3 col-md-6 col-sm-12" *ngFor="let library of libraries">
+        <app-card [icon]="getLibraryIcon(library.type)" [routerLink]="library.id + '/folders'" [title]="library.name">
+        </app-card>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

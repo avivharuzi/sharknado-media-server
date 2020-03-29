@@ -1,0 +1,11 @@
+<ng-container>
+  <div class="mb-3">
+    <app-library-new></app-library-new>
+  </div>
+  <ng-container *ngIf="libraries$ | async as libraries">
+    <ng-container *ngFor="let library of libraries">
+      <app-select [icon]="getLibraryIcon(library.type)"
+                  [routerLink]="'/libraries/' + library.id + '/folders'">{{ library.name }}</app-select>
+    </ng-container>
+  </ng-container>
+</ng-container>

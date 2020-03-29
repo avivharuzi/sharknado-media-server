@@ -1,0 +1,27 @@
+@import './../abstracts';
+
+.btn {
+  border-radius: $border-radius-default;
+  padding: $size-12 $size-24;
+  outline: none;
+  border: $size-1 solid $border-color;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border: $size-1 solid $color-transparent;
+  background: $color-primary-theme;
+  color: $color-white;
+}
+
+.btn-secondary {
+  border: $size-1 solid $color-transparent;
+  background: $background-color-hover;
+}
+
+.btn-link {
+  color: $color-secondary-text;
+  padding: $size-0;
+  border: none;
+}

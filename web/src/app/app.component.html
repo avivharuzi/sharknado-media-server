@@ -1,0 +1,16 @@
+<div class="app-container" [class.app-is-mobile]="mobileQuery.matches">
+  <app-header (menuClicked)="sidenav.toggle()"></app-header>
+  <mat-sidenav-container class="app-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 153 : 0">
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="153">
+      <div class="app-sidenav">
+        <app-sidenav></app-sidenav>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="container-fluid mt-5">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

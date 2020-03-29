@@ -1,0 +1,14 @@
+<ng-container *ngIf="folder && folder.files.length > 0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mb-5" *ngFor="let file of folder.files">
+        <plyr style="display: block; width: 100%;" [plyrTitle]="folder.title" [plyrPlaysInline]="true" [plyrSources]="[{
+    src: file.metadata.path | stream:'video'
+    }]" [plyrPoster]="folder?.background | public:'backgrounds'"></plyr>
+      </div>
+      <div class="col-12">
+        <h1>{{ folder.title }}</h1>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,40 @@
+@import './../../../../scss/abstracts';
+
+:host {
+  &:focus {
+    outline: none;
+  }
+}
+
+.card {
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: $shadow-lg;
+  }
+
+  border-radius: $border-radius-default;
+  border: $size-2 solid $border-color;
+  cursor: pointer;
+  box-shadow: $shadow;
+
+  .card-image {
+    img {
+      border-top-left-radius: $border-radius-default;
+      border-top-right-radius: $border-radius-default;
+      width: 100%;
+      height: $size-384;
+      object-fit: cover;
+    }
+  }
+
+  .card-body {
+    padding: $size-32;
+  }
+
+  .card-title h3 {
+    line-height: $size-24;
+    min-height: $size-48;
+    overflow: hidden;
+    font-size: $font-size-18;
+  }
+}

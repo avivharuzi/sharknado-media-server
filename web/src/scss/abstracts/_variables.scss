@@ -1,0 +1,102 @@
+/** START - Basic variables **/
+$color-transparent: transparent;
+
+$color-black: #000;
+$color-white: #fff;
+
+$color-gray-lightest: #f9f9f9; // rgb(249, 249, 249)
+$color-gray-lighter: #e0e0e0; // rgb(224, 224, 224)
+$color-gray-light: #606060; // rgb(96, 96, 96)
+$color-gray-darkest: #030303; // rgb(3, 3, 3)
+
+$color-purple-50: #eae2f8;
+$color-purple-100: #cfbcf2;
+$color-purple-200: #a081d9;
+$color-purple-300: #8662c7;
+$color-purple-400: #724bb7;
+$color-purple-500: #653cad;
+$color-purple-600: #51279b;
+$color-purple-700: #421987;
+$color-purple-800: #34126f;
+$color-purple-900: #240754;
+
+$screen-xs: 576px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+$font-family-roboto: 'Roboto';
+
+$size-0: 0;
+$size-1: 1px;
+$size-2: 2px;
+$size-4: 4px;
+$size-8: 8px;
+$size-12: 12px;
+$size-16: 16px;
+$size-24: 24px;
+$size-32: 32px;
+$size-48: 48px;
+$size-64: 64px;
+$size-96: 96px;
+$size-128: 128px;
+$size-192: 192px;
+$size-256: 256px;
+$size-384: 384px;
+$size-512: 512px;
+$size-640: 640px;
+$size-768: 768px;
+$size-full: 9999px;
+
+$font-size-10: 10px;
+$font-size-12: 12px;
+$font-size-13: 13px;
+$font-size-14: 14px;
+$font-size-16: 16px;
+$font-size-18: 18px;
+$font-size-20: 20px;
+$font-size-24: 24px;
+$font-size-30: 30px;
+$font-size-36: 36px;
+$font-size-48: 48px;
+$font-size-60: 60px;
+$font-size-72: 72px;
+
+$font-weight-hairline: 100;
+$font-weight-thin: 200;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+$font-weight-black: 900;
+
+$border-radius-sm: $size-4;
+$border-radius-md: $size-8;
+$border-radius-lg: $size-12;
+$border-radius-xl: $size-16;
+$border-radius-full: $size-full;
+/** END - Basic variables **/
+
+/** START - Application variables **/
+/** Fonts **/
+$font-family-primary: $font-family-roboto;
+$font-size-body: $font-size-14;
+
+/** Colors **/
+$background-color-body: $color-gray-lightest;
+$background-color-hover: $color-gray-lighter;
+$color-primary-text: $color-gray-darkest;
+$color-secondary-text: $color-gray-light;
+$color-primary-theme-light: $color-purple-50;
+$color-primary-theme: $color-purple-500;
+$color-primary-theme-dark: $color-purple-700;
+
+/** Borders **/
+$border-radius-default: $border-radius-md;
+$border-color: $color-gray-lighter;
+
+/** Shadows **/
+$shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);

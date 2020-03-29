@@ -1,0 +1,10 @@
+<ng-container *ngIf="folders$ | async as folders">
+  <ng-container *ngIf="!(isFoldersLoading$ | async)">
+    <div class="row" *ngIf="folders.length > 0">
+      <div class="col-xl-3 col-lg-6 col-md-12 mb-3" *ngFor="let folder of folders">
+        <app-card [routerLink]="folder.id" [imgSrc]="folder?.background | public:'backgrounds'" [title]="folder.title">
+        </app-card>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

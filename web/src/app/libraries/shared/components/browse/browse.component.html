@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-12">
+    <ng-container *ngIf="browseRoot">
+      <input [(ngModel)]="path" class="form-control" type="text">
+    </ng-container>
+  </div>
+  <div class="col-4 mt-3">
+    <ng-container *ngIf="browseRoot">
+      <div *ngFor="let path of browseRoot.paths">
+        <app-select icon="folder" [active]="currentBrowseRootPath === path"
+                    (click)="updateBrowseCurrent(path)">{{ path.title }}</app-select>
+      </div>
+    </ng-container>
+  </div>
+  <div class="col-8 mt-3">
+    <ng-container *ngIf="browseCurrent">
+      <app-select icon="keyboard_backspace" *ngIf="!isCurrentPathBelongToBrowseRoot()" (click)="back()">.. [Back]
+      </app-select>
+      <div *ngFor="let path of browseCurrent.paths">
+        <app-select icon="folder" (click)="updateBrowseCurrent(path)">{{ path.title }}</app-select>
+      </div>
+      <div *ngFor="let file of browseCurrent.files">
+        <app-select icon="insert_drive_file" [disabled]="true">{{ file.title }}</app-select>
+      </div>
+    </ng-container>
+  </div>
+</div>

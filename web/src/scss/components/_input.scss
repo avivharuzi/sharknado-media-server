@@ -1,0 +1,22 @@
+@import './../abstracts';
+
+label {
+  display: block;
+  margin-bottom: $size-8;
+  color: $color-secondary-text;
+}
+
+.form-control {
+  outline: none;
+  border-radius: $border-radius-default;
+  border: $size-1 solid $border-color;
+  padding: $size-12 $size-16;
+  width: 100%;
+  display: block;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+  &:focus {
+    border: $size-1 solid $color-primary-theme;
+    box-shadow: 0 0 0 0.2rem $color-primary-theme-light;
+  }
+}

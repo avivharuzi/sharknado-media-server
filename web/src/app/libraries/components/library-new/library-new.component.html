@@ -1,0 +1,86 @@
+<app-select (click)="openModalAddLibrary(addLibrary)" icon="add">Add Library</app-select>
+<ng-template #addLibrary>
+  <app-loader [loading]="loading"></app-loader>
+  <div class="modal-header">
+    <h2 class="modal-title d-flex align-items-center"><i class="material-icons mr-3">add</i>Add Library</h2>
+    <button type="button" class="btn btn-link" (click)="modalRefAddLibrary.hide()">
+      <i class="material-icons">close</i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-3">
+        <app-select icon="format_align_center" [active]="currentStep === AddLibraryStep.SelectType"
+                    (click)="goToStepSelectType()">Select type
+        </app-select>
+        <app-select icon="folder" [active]="currentStep === AddLibraryStep.AddFolders" (click)="goToStepAddFolders()">
+          Add folders
+        </app-select>
+      </div>
+      <div class="col-9">
+        <ng-container [ngSwitch]="currentStep">
+          <ng-container *ngSwitchCase="AddLibraryStep.SelectType">
+            <p class="mb-4">Select your library type</p>
+            <div class="row mb-5">
+              <div class="col" (click)="selectType(LibraryType.Video)">
+                <app-select-big icon="videocam" [active]="type === LibraryType.Video">Videos</app-select-big>
+              </div>
+              <div class="col" (click)="selectType(LibraryType.Audio)">
+                <app-select-big icon="music_note" [active]="type === LibraryType.Audio">Music</app-select-big>
+              </div>
+              <div class="col" (click)="selectType(LibraryType.Photo)">
+                <app-select-big icon="photo_camera" [active]="type === LibraryType.Photo">Photos</app-select-big>
+              </div>
+            </div>
+            <p class="mb-4">Name your library</p>
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Name" class="form-control" [(ngModel)]="name">
+          </ng-container>
+          <ng-container *ngSwitchCase="AddLibraryStep.AddFolders">
+            <p class="mb-4">Add folders to your library</p>
+            <div *ngIf="paths && paths.length > 0">
+              <div class="d-flex flex-row align-items-center mb-3" *ngFor="let path of paths; let i = index">
+                <input type="text" class="form-control mr-3" [value]="path">
+                <button class="btn btn-link" (click)="removePath(i)"><i class="material-icons">delete</i></button>
+              </div>
+            </div>
+            <div>
+              <button class="btn d-flex align-items-center" (click)="openModalBrowse(browse)"><i
+                class="material-icons mr-3">create_new_folder</i>BROWSE
+                FOR MEDIA FOLDER
+              </button>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <ng-container [ngSwitch]="currentStep">
+      <ng-container *ngSwitchCase="AddLibraryStep.SelectType">
+        <button type="button" class="btn btn-secondary mr-3" (click)="modalRefAddLibrary.hide()">CANCEL</button>
+        <button type="button" class="btn btn-primary" (click)="goToStepAddFolders()">NEXT</button>
+      </ng-container>
+      <ng-container *ngSwitchCase="AddLibraryStep.AddFolders">
+        <button type="button" class="btn btn-secondary mr-3" (click)="modalRefAddLibrary.hide()">CANCEL</button>
+        <button type="button" class="btn btn-primary" (click)="createLibrary()">ADD LIBRARY</button>
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-template>
+<ng-template #browse>
+  <div class="modal-header">
+    <h2 class="modal-title d-flex align-items-center"><i class="material-icons mr-3">create_new_folder</i>Add
+      Folder</h2>
+    <button type="button" class="btn btn-link" (click)="modalRefBrowse.hide()">
+      <i class="material-icons">close</i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-browse #browseComponent></app-browse>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary mr-3" (click)="modalRefBrowse.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary" (click)="addPath(browseComponent.path)">ADD</button>
+  </div>
+</ng-template>

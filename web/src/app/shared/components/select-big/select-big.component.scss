@@ -1,0 +1,22 @@
+@import './../../../../scss/abstracts';
+
+div.select-big {
+  border: $size-2 solid $border-color;
+  width: 100%;
+  padding: $size-32 $size-16;
+  border-radius: $size-16;
+  cursor: pointer;
+  color: $color-secondary-text;
+  font-weight: bold;
+
+  &.active {
+    border: $size-2 solid $color-primary-theme;
+    background: $color-primary-theme-light;
+    color: $color-primary-theme-dark;
+  }
+
+  i {
+    font-size: $font-size-60;
+    margin-bottom: $size-8;
+  }
+}

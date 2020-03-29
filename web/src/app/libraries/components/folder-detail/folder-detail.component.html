@@ -1,0 +1,12 @@
+<ng-container *ngIf="folder$ | async as folder">
+  <ng-container *ngIf="!(isFolderLoading$ | async)">
+    <ng-container [ngSwitch]="folder.library.type">
+      <ng-container *ngSwitchCase="LibraryType.Photo">
+        <app-photo-list [folder]="folder"></app-photo-list>
+      </ng-container>
+      <ng-container *ngSwitchCase="LibraryType.Video">
+        <app-video-list [folder]="folder"></app-video-list>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ng-container>
