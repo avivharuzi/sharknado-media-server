@@ -2,12 +2,14 @@
 
 Sharknado a personal media server with website to access the media.
 
-## Tech
+## Stack
 
 * Angular 9
 * NgRx
 * Node.js
 * TypeScript
+* TypeORM
+* SQLite
 
 ## Development
 
