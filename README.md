@@ -2,9 +2,9 @@
 
 # Sharknado Media Server
 
-Sharknado a personal media server with website to access the media.
+Sharknado a personal media server with a website to access the media.
 
-> This project made for presonal use so there is a lot of things that still missing if you like this project let me know maybe it can be grow more than it is.
+> This project made for personal use so there is a lot of things that still missing if you like this project let me know maybe it can be grown more than it is.
 
 ## Stack
 
