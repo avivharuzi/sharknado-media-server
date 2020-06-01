@@ -5,7 +5,9 @@ import { Request, Response } from 'express';
 
 export class StreamHandler {
   static audio(req: Request, res: Response): void {
-    StreamHandler.streamTinyFiles(req, res);
+    const filePath = decodeURIComponent(req.params.key);
+
+    res.sendFile(filePath);
   }
 
   static photo(req: Request, res: Response): void {
