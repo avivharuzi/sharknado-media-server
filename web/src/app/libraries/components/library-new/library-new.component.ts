@@ -30,6 +30,7 @@ export class LibraryNewComponent {
   paths: string[];
 
   loading: boolean;
+  errorMessage: string;
 
   constructor(
     private libraryService: LibraryService,
@@ -89,9 +90,13 @@ export class LibraryNewComponent {
       paths,
     }).subscribe(library => {
       this.store.dispatch(LibraryActions.addLibrary({ library }));
+      this.errorMessage = null;
       this.loading = false;
       this.modalRefAddLibrary.hide();
       this.reset();
+    }, err => {
+      this.errorMessage = err.error.message;
+      this.loading = false;
     });
   }
 
