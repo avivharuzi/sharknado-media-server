@@ -7,6 +7,9 @@
       <ng-container *ngSwitchCase="LibraryType.Video">
         <app-video-list [folder]="folder"></app-video-list>
       </ng-container>
+      <ng-container *ngSwitchCase="LibraryType.Audio">
+        <app-audio-list [folder]="folder"></app-audio-list>
+      </ng-container>
     </ng-container>
   </ng-container>
 </ng-container>

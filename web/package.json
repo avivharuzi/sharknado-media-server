@@ -27,6 +27,7 @@
     "@ngrx/store": "^9.0.0",
     "@ngrx/store-devtools": "^9.0.0",
     "bootstrap": "^4.4.1",
+    "ngx-audio-player": "^9.0.7",
     "ngx-bootstrap": "^5.5.0",
     "ngx-plyr": "^4.0.0",
     "normalize.css": "^8.0.1",

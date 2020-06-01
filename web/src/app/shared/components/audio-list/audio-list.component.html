@@ -1,0 +1,7 @@
+<ng-container *ngIf="playlist && playlist.length > 0">
+  <div class="container">
+    <mat-advanced-audio-player [playlist]="playlist" [displayTitle]="true"
+                               [displayPlaylist]="true"
+                               [displayVolumeControls]="true" [expanded]="true"></mat-advanced-audio-player>
+  </div>
+</ng-container>

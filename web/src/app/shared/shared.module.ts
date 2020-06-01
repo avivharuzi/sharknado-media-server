@@ -1,7 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { PlyrModule } from 'ngx-plyr';
 
+import { AudioListComponent } from './components/audio-list/audio-list.component';
 import { CardComponent } from './components/card/card.component';
 import { LineClampDirective } from './directives/line-clamp.directive';
 import { LoaderComponent } from './components/loader/loader.component';
@@ -14,6 +16,7 @@ import { VideoListComponent } from './components/video-list/video-list.component
 
 @NgModule({
   declarations: [
+    AudioListComponent,
     CardComponent,
     LineClampDirective,
     LoaderComponent,
@@ -26,9 +29,14 @@ import { VideoListComponent } from './components/video-list/video-list.component
   ],
   imports: [
     CommonModule,
+    NgxAudioPlayerModule,
     PlyrModule,
   ],
+  providers: [
+    StreamPipe,
+  ],
   exports: [
+    AudioListComponent,
     CardComponent,
     LineClampDirective,
     LoaderComponent,
