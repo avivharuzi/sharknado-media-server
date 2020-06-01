@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { PlyrModule } from 'ngx-plyr';
 
+import { AlertComponent } from './components/alert/alert.component';
 import { AudioListComponent } from './components/audio-list/audio-list.component';
 import { CardComponent } from './components/card/card.component';
 import { LineClampDirective } from './directives/line-clamp.directive';
@@ -16,6 +17,7 @@ import { VideoListComponent } from './components/video-list/video-list.component
 
 @NgModule({
   declarations: [
+    AlertComponent,
     AudioListComponent,
     CardComponent,
     LineClampDirective,
@@ -36,6 +38,7 @@ import { VideoListComponent } from './components/video-list/video-list.component
     StreamPipe,
   ],
   exports: [
+    AlertComponent,
     AudioListComponent,
     CardComponent,
     LineClampDirective,

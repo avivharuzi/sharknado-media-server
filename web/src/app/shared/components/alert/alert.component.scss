@@ -1,0 +1,10 @@
+@import './../../../../scss/abstracts';
+
+.alert {
+  border-radius: $border-radius-default;
+
+  &.alert-danger {
+    color: $color-red-500;
+    background-color: $color-red-50;
+  }
+}

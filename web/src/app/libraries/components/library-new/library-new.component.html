@@ -8,6 +8,9 @@
     </button>
   </div>
   <div class="modal-body">
+    <div *ngIf="errorMessage" class="mb-4">
+      <app-alert type="danger" [message]="errorMessage"></app-alert>
+    </div>
     <div class="row">
       <div class="col-3">
         <app-select icon="format_align_center" [active]="currentStep === AddLibraryStep.SelectType"
